@@ -8,7 +8,7 @@ import time
 import numpy as np
 
 from html_parser_class import Browser
-from word_values import sort_by_letter_index_probability,sort_by_letter_frequency , get_letter_index_frequency
+from word_values import sort_by_letter_index_probability,sort_by_letter_frequency , get_letter_index_frequency, sort_by_entropy
 
 
 def remove_popups(webdriver: Browser):
@@ -126,7 +126,7 @@ def filter_words(word_list: list, regex_filter: str) -> list:
 
     sorted_filtered_word_list = sort_by_letter_frequency(filtered_word_list)
     #new_letter_index_frequency = get_letter_index_frequency(filtered_word_list)
-    #sorted_filtered_word_list = sort_by_letter_index_probability(
+    #sorted_filtered_word_list = sort_by_entropy(
     #                                        new_letter_index_frequency, 
     #                                        filtered_word_list)
     

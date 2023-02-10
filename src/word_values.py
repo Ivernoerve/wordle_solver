@@ -100,8 +100,22 @@ def sort_by_letter_frequency(word_list: list) -> list:
     return sorted_words
 
         
+def sort_by_entropy(letter_count_df, word_list):
+    letter_probability_df = letter_count_df / len(word_list)
 
+    word_values = []
 
+    for word in word_list:
+
+        score = 0
+        for i, l in enumerate(word):
+            score -= letter_probability_df[l][i] * np.log2(letter_probability_df[l][i])
+
+        word_values.append(score)
+    sorted_words = [word for _, word in sorted(zip(word_values, word_list))]
+    sorted_words.reverse()
+
+    return sorted_words
 
 
 if __name__ == "__main__":
